@@ -8,17 +8,12 @@ get = (req, res, next) => {
 
 post = (req, res, next) => {
     req.models.User.create({
-        name: req.body.name,
-        username: req.body.username,
-        email: req.body.email,
-        address: {
-            street: req.body.address.street,
-            suite: req.body.address.suite,
-            city: req.body.address.city,
-            zipcode: req.body.address.zipcode,
-            geo: {
-                lat: req.body.address.geo.lat,
-                lng: req.body.address.geo.lng
+        user: {
+            email: req.body.user.email,
+            userName: req.body.user.userName,
+            name: {
+                firstName: req.body.name.firstName,
+                lastName: req.body.name.lastName
             }
         }
     }).then((user) => {
@@ -28,7 +23,27 @@ post = (req, res, next) => {
     })
 }
 
+// put = (req, res, next) => {
+//     res.send(req.params)
+//     // req.models.User.create({
+//     //     user: {
+//     //         email: req.body.user.email,
+//     //         userName: req.body.user.userName,
+//     //         name: {
+//     //             firstName: req.body.name.firstName,
+//     //             lastName: req.body.name.lastName
+//     //         }
+//     //     }
+//     // }).then((user) => {
+//     //     return res.status(201).send(user);
+//     // }).catch((error) => {
+//     //     next(error);
+//     // })
+// }
+
 module.exports = {
-    get,
-    post
+    get: get,
+    post: post,
+    // put:put,
 }
+

@@ -1,24 +1,17 @@
 mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    username: {
-        type: String,
-    },
-    email: {
-        type: String,
-    },
-    address: {
-        street: String,
-        suite: String,
-        city: String,
-        zipcode: String,
-        geo: {
-            lat: {
-                type: Number,
+    user: {
+        userName: String,
+        email: {
+            type: String,
+        },
+        name: {
+            firstName: {
+                type: String,
             },
-            lng: {
-                type: Number,
+            lastName: {
+                type: String,
             }    
         }
     }
