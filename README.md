@@ -85,6 +85,7 @@ curl localhost:3000/posts/{_id}
 curl localhost:3000/users | jq
 curl localhost:3000/users/{_id} | jq
 
+{
 "user": {
     "name": {
       "firstName": "Marcus",
@@ -100,6 +101,7 @@ curl localhost:3000/users/{_id} | jq
 ```
 curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"michelebyman@gmail.com", "userName":"Miche"}, "name":{"firstName":"Marcus", "lastName":"Andersson"}}' | jq
 
+{
 "user": {
     "name": {
       "firstName": "Marcus",
