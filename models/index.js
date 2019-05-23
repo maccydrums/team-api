@@ -5,7 +5,7 @@ const Post = require('./posts.js')
 const uri = process.env.DATABASE_URL || "mongodb://localhost:27017/schoolprojec"
 
 const connectDb = () => {
-    return mongoose.connect(uri);
+    return mongoose.connect(uri, {useFindAndModify: false});
 }
 
 module.exports = {
