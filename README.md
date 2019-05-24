@@ -1,5 +1,6 @@
 **API Exercise**
 ----
+* **All you need to set up this on your computer should be below**
 
 * **URL**
 
