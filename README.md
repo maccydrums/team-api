@@ -82,8 +82,11 @@
 -
 curl localhost:3000/users | jq
 curl localhost:3000/users/{_id} | jq
-
+```
+* **GET**
+```
 curl -X GET "localhost:3000/users" | jq
+
  {
     "user": {
       "name": {
@@ -97,6 +100,8 @@ curl -X GET "localhost:3000/users" | jq
     "__v": 0
   },
 ```
+
+* **POST**
 ```
 curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"carham@hotmail.com", "userName":"CarlieCarham"}, "name":{"firstName":"Charlie", "lastName":"Carham"}}' | jq
 
@@ -113,6 +118,10 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
   "__v": 0
 }
 ```
+
+
+
+
 
 
 
@@ -184,9 +193,21 @@ curl -X PATCH "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: applic
 ```
 * **PUT**
 ```
-// In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id
+// In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id that you send with it
 
-curl -X PUT "localhost:3000/posts/5ce64749162aa905197ab93c" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
+curl -X PUT "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
+
+    "post": {
+      "author": {
+        "firstName": "YOU DID IT AGAIN",
+        "lastName": " Now You should know it"
+      },
+      "title": "Best exempel",
+      "body": "Here comes a perfect text"
+    },
+    "_id": "5ce821fce0a6fe04c0ef18bb",
+    "__v": 0
+  }
 
 ```
 * **DELETE**
