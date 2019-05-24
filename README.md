@@ -99,7 +99,7 @@ curl localhost:3000/users/{_id} | jq
 } 
 ```
 ```
-curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"michelebyman@gmail.com", "userName":"Miche"}, "name":{"firstName":"Marcus", "lastName":"Andersson"}}' | jq
+curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"carham@hotmail.com", "userName":"CarlieCarham"}, "name":{"firstName":"Charlie", "lastName":"Carham"}}' | jq
 
 {
 "user": {

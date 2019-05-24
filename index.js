@@ -1,14 +1,16 @@
 const express = require("express");
+const cors = require('cors');
 const routes = require('./routes');
 const middleware = require('./middlewares');
-const db = require('./models')
+const db = require('./models');
 const app = express();
 
 
 // environment variable PORT or 3000 if unset
 const port = process.env.PORT || 3000;
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({
   extended: true
 }))
