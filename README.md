@@ -118,6 +118,80 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
   "__v": 0
 }
 ```
+* **PATCH**
+```
+// In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change, but you will receive the object you sent and when you do a new get you will see the updated version.
+Example: You could use PATCH method to update title. 
+
+curl -X PATCH "localhost:3000/users/5ce809cdc2b01d0317a13e0c" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"kalle@gmail.com", "userName":"KalleAnka"}, "name":{"firstName":"Kalle", "lastName":"Anka"}}' | jq
+
+ {
+    "user": {
+      "name": {
+        "firstName": "Charlie",
+        "lastName": "Carham"
+      },
+      "email": "kalle@gmail.com",
+      "userName": "KalleAnka"
+    },
+    "_id": "5ce809cdc2b01d0317a13e0c",
+    "__v": 0
+  }
+```
+* **PUT**
+```
+// In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id that you send with it
+
+curl -X PUT "localhost:3000/users/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
+
+    "post": {
+      "author": {
+        "firstName": "YOU DID IT AGAIN",
+        "lastName": " Now You should know it"
+      },
+      "title": "Best exempel",
+      "body": "Here comes a perfect text"
+    },
+    "_id": "5ce821fce0a6fe04c0ef18bb",
+    "__v": 0
+  }
+
+```
+* **DELETE**
+```
+//  In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and this request will DELETE the post with that unique _id
+
+curl -X DELETE "localhost:3000/users/5ce809cdc2b01d0317a13e0c" -H "accept: application/json" | jq
+
+{
+  "post": {
+    "author": {
+      "firstName": "Firstname",
+      "lastName": "Lastname"
+    },
+    "title": "Title",
+    "body": "Body"
+  },
+  "_id": "5ce64753162aa905197ab93d",
+  "__v": 0
+}
+
+// here we use -i to get info about the request, this is something that you can do instead of | jq 
+
+curl -X DELETE "localhost:3000/users/5ce80a02c2b01d0317a13e0d" -H "accept: application/json" -i
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 151
+ETag: W/"97-EkBzpAaounB/HiYjjJ8HaTFWz5w"
+Date: Fri, 24 May 2019 18:04:04 GMT
+Connection: keep-alive
+
+{"user":{"name":{"firstName":"Charlie","lastName":"Carham"},"email":"kalle@gmail.com","userName":"KalleAnka"},"_id":"5ce809cdc2b01d0317a13e0c","__v":0}%
+
+```
 
 
 
