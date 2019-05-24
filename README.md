@@ -76,27 +76,27 @@
     **Content:**
     
 
-* **Sample Call:**
+* **Sample Call Users:**
 
 ```
-curl localhost:3000/posts | jq
-curl localhost:3000/posts/{_id}
+
 -
 curl localhost:3000/users | jq
 curl localhost:3000/users/{_id} | jq
 
-{
-"user": {
-    "name": {
-      "firstName": "Marcus",
-      "lastName": "Andersson"
+curl -X GET "localhost:3000/users" | jq
+ {
+    "user": {
+      "name": {
+        "firstName": "Michele",
+        "lastName": "Byman"
+      },
+      "email": "michelebyman@gmail.com",
+      "userName": "Miche"
     },
-    "email": "sdfsdfs",
-    "userName": "sfsdfsd"
+    "_id": "5ce646a0162aa905197ab93b",
+    "__v": 0
   },
-  "_id": "5ce666ac5abb6d361587d536",
-  "__v": 0
-} 
 ```
 ```
 curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"carham@hotmail.com", "userName":"CarlieCarham"}, "name":{"firstName":"Charlie", "lastName":"Carham"}}' | jq
@@ -111,6 +111,47 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
     "userName": "Miche"
   },
   "_id": "5ce66dfb038f2b37a9c0fe8d",
+  "__v": 0
+}
+```
+
+
+
+* **Sample Call Posts:**
+
+```
+
+-
+curl localhost:3000/posts | jq
+curl localhost:3000/posts/{_id} | jq
+
+curl -X GET "localhost:3000/posts" | jq
+  {
+    "post": {
+      "author": {
+        "firstName": "Firstname",
+        "lastName": "Lastname"
+      },
+      "title": "Title",
+      "body": "Body"
+    },
+    "_id": "5ce64749162aa905197ab93c",
+    "__v": 0
+  },
+```
+```
+curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}' | jq
+
+{
+  "post": {
+    "author": {
+      "firstName": "Michele",
+      "lastName": "Byman"
+    },
+    "title": "Best exempel",
+    "body": "Here comes a perfect text"
+  },
+  "_id": "5ce80c43c2b01d0317a13e0f",
   "__v": 0
 }
 ```
