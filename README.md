@@ -4,7 +4,32 @@
 
 * **URL**
 
-* **Method:**
+* **CURL**
+ ```
+// we use curl in our terminal to be able to send requests. 
+Exampel: curl -X GET "localhost:3000/users" 
+ ```
+  * **Brew for mac**
+ ```
+"So, Homebrew is a package manager for OS X that allows a user to easily install software from the larger body of UNIX and open source software on the Mac" 
+source:
+https://www.quora.com/What-is-Homebrew-for-OS-X
+
+
+Paste that in a macOS Terminal: 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+ ```
+ * **JQ**
+ ```
+ //We use jq in our request to make it more readable. 
+ Install it jq by typing this in your terminal: brew install jq
+ Now we can do requests that looks nicer
+ Exampel: curl -X GET "localhost:3000/users"  | jq
+ ```
+
+* **Methods:**
 
   `GET` | `POST` | `DELETE` | `PUT` | `PATCH`
   
