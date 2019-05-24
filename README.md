@@ -37,7 +37,7 @@
 
 * **Success Response:**
 
-  GET /posts
+  POST /posts
   * **Code:** 200
   ```
     {
