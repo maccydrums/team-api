@@ -124,6 +124,10 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
 -
 curl localhost:3000/posts | jq
 curl localhost:3000/posts/{_id} | jq
+```
+* **GET**
+```
+// In this example you you will get all posts that are made to the posts-path
 
 curl -X GET "localhost:3000/posts" | jq
   {
@@ -140,7 +144,13 @@ curl -X GET "localhost:3000/posts" | jq
   },
 ```
 ```
-curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}' | jq
+```
+* **POST**
+```
+// In this example you you will post (create) a new post to the posts-path ??? rewrite -> (if user hits same requests 2 times it would create another new resource if there is no constraint.)
+Example: Use POST method to save new user, it will get a unique _id.
+
+curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best example", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}' | jq
 
 {
   "post": {
@@ -154,4 +164,74 @@ curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Ty
   "_id": "5ce80c43c2b01d0317a13e0f",
   "__v": 0
 }
+
+```
+```
+```
+* **PATCH**
+```
+// In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change 
+Example: You could use PATCH method to update title. 
+
+curl -X PATCH "localhost:3000/posts/5ce8138ee0a6fe04c0ef18b9" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"This is the next best example", "body": "Here comes another perfect text watch and you will find the difference"}, "author": { "firstName": "YOU DID IT", "lastName":"You know it" }}'  | jq
+
+{
+  "post": {
+    "author": {
+      "firstName": "Michele",
+      "lastName": "Byman"
+    },
+    "title": "Best exempel",
+    "body": "Here comes a perfect text"
+  },
+  "_id": "5ce8138ee0a6fe04c0ef18b9",
+  "__v": 0
+}
+```
+```
+
+
+```
+* **PUT**
+```
+// In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id
+
+curl -X PUT "localhost:3000/posts/5ce6691a76edfe368ccab64a" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}' -i
+
+```
+* **DELETE**
+```
+//  In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and this request will DELETE the post with that unique _id
+
+curl -X DELETE "localhost:3000/posts/5ce64753162aa905197ab93d" -H "accept: application/json" | jq
+
+{
+  "post": {
+    "author": {
+      "firstName": "Firstname",
+      "lastName": "Lastname"
+    },
+    "title": "Title",
+    "body": "Body"
+  },
+  "_id": "5ce64753162aa905197ab93d",
+  "__v": 0
+}
+
+```
+```
+// here we use -i to get info about the request, this is something that you can do instead of | jq 
+
+curl -X DELETE "localhost:3000/posts/5ce80c43c2b01d0317a13e0f" -H "accept: application/json" -i
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 161
+ETag: W/"a1-iqPUnNfI8h0ystHFeMO/bi/9Mu4"
+Date: Fri, 24 May 2019 15:42:21 GMT
+Connection: keep-alive
+
+{"post":{"author":{"firstName":"Michele","lastName":"Byman"},"title":"Best exempel","body":"Here comes a perfect text"},"_id":"5ce80c43c2b01d0317a13e0f","__v":0}%
 ```
