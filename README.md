@@ -7,7 +7,7 @@
 When that is done navigate to the folder and Paste this in your terminal: 
 npm install 
 
-This will install all the dependencies you will need for this project and give you the latest updates. 
+This will install all the dependencies you need for this project and give you the latest updates. 
 ```
 
 
