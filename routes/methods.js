@@ -15,6 +15,11 @@ put = (req, res) => {
   res.status(200).send(response)
 }
 
+patch = (req, res) => {
+  response = 'You sent a Patch'
+  res.status(200).send(response)
+}
+
 del = (req, res) => {
   response = 'you sent a DELETE'
   res.status(204).send(response)
@@ -24,5 +29,6 @@ module.exports = {
   get: get,
   post: post, 
   put: put, 
-  delete: del
+  del: del,
+  patch: patch
 } 

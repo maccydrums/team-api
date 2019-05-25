@@ -24,9 +24,60 @@ Paste that in a macOS Terminal:
  * **JQ**
  ```
  //We use jq in our request to make it more readable. 
- Install it jq by typing this in your terminal: brew install jq
+ Install jq by typing this in your terminal: brew install jq
  Now we can do requests that looks nicer
  Exampel: curl -X GET "localhost:3000/users"  | jq
+ ```
+* **Express**
+ ```
+ // ????  Is a HTTP-server we use 
+
+ Setting it up from scratch
+Paste that in your Terminal: 
+npm init
+npm install --save express
+
+add the "start": "node index.js",in package json under scripts for convenience
+
+Create and add the contents to ìndex.js file
+
+npm start
+press ctrl-c to break execution.
+
+
+Instructions
+npm install
+npm start
+
+when you do a request you will see that it is powered by Express. 
+
+try it by typing this in your terminal. 
+
+curl -i localhost:YourPortGoesHERE
+
+should get this:
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+
+
+
+ ```
+ * **Mongoose**
+ ```
+ //Mongoose is an NPM lib used to communicate with a mongodb database.
+
+This example can add a user and will respond with the user added
+
+Setting it up from scratch
+Paste that in your Terminal: 
+npm install --save mongoose
+
+????   Instructions  
+npm install
+npm start
+
+
  ```
 
 * **Methods:**
@@ -345,4 +396,35 @@ Connection: keep-alive
 
   * **Code:** default  
     **Content:**
+
+
+    * **Routing:** 
+  ```
+Should we explaine this in more detail? just copy pasted this...../Michele
+
+Listens to HTTP get on / and returns what you have specified in the router-set-up.
+
+This solution shows how to receive parameter data by showing query or path parameters as well as received headers
+
+There are three kinds of parameters in HTTP. 
+
+Path parameter
+A path parameter is supplied on the path itself by adding a colon (:) on the path.
+
+router.get("/:pathParameter", helloWorld.params)
+the value of this parameter is available as req.params.pathParameter
+
+Query parameter
+Query parameters are supplied at the end of the path
+
+localhost:3000/someparam?name=value
+the value of this parameter is available as req.query.name
+
+Header parameter
+Header parameters are supplied in the request header as key: value
+
+localhost:3000/someparam -H "key: value"
+the value of this parameter is avaulable as req.header.key
+
+  ```
     

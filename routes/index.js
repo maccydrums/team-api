@@ -34,6 +34,7 @@ router.patch("/posts/:id", post.patch)
 router.get('/methods', methods.get);
 router.post('/methods', methods.post);
 router.put('/methods', methods.put);
-router.delete('/methods', methods.delete);
+router.patch('/methods', methods.patch);
+router.delete('/methods', methods.del);
 
 module.exports = router;
