@@ -399,7 +399,7 @@ Connection: keep-alive
 
 
     * **Routing:** 
-
+  ```
     Should we explaine this in more detail? just copy pasted this...../Michele
 
 Listens to HTTP get on / and returns what you have specified in the router-set-up.
@@ -448,7 +448,8 @@ Date: Sat, 25 May 2019 07:06:36 GMT
 Connection: keep-alive
 
 You sent a GET request and got a custom response header%
-
+  ```
+  ```
   * **POST**
   ```
   Exampel: 
@@ -465,9 +466,8 @@ Date: Sat, 25 May 2019 07:09:01 GMT
 Connection: keep-alive
 
 You sent a POST, I will respond with a status of 201 (created) even though I did not%
+  ```
 
-  ```
-  ```
   * **PUT**
   ```
   Exampel: 
@@ -487,7 +487,6 @@ You sent a PUT%
 
   ```
 
-  ```
   * **PATCH**
   ```
   Exampel: 
@@ -506,7 +505,6 @@ Connection: keep-alive
 You sent a Patch%
 
   ```
-   ```
   * **Delete**
   ```
   A no content response literally has no content even if you try to send it. 
