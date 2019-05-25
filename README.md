@@ -390,7 +390,7 @@ Connection: keep-alive
     "_id": "5ce666ac5abb6d361587d536",
     "__v": 0
   }
-  
+   ```
   
 * **Error Response:**
 
@@ -427,4 +427,102 @@ localhost:3000/someparam -H "key: value"
 the value of this parameter is avaulable as req.header.key
 
   ```
-    
+  ```
+  * **Methods and Return Codes**
+  ```
+  ```
+  * **GET**
+  ```
+  Exampel: 
+
+  curl -X GET "localhost:3000/methods" -i -s
+
+  HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+custom-response-header: yep
+Content-Type: text/html; charset=utf-8
+Content-Length: 55
+ETag: W/"37-FMexziSDJRl0DK7vYVWavjogAQg"
+Date: Sat, 25 May 2019 07:06:36 GMT
+Connection: keep-alive
+
+You sent a GET request and got a custom response header%
+
+  ```
+ ```
+  * **POST**
+  ```
+  Exampel: 
+
+  curl -X POST "localhost:3000/methods" -i -s
+
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 84
+ETag: W/"54-B4RA+fvUKWrqYQGvH0iUAOY+qUM"
+Date: Sat, 25 May 2019 07:09:01 GMT
+Connection: keep-alive
+
+You sent a POST, I will respond with a status of 201 (created) even though I did not%
+
+  ```
+  ```
+  * **PUT**
+  ```
+  Exampel: 
+
+  curl -X PUT "localhost:3000/methods" -i -s
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 14
+ETag: W/"e-6XNIWqfL1LQQ9w1i3Wjy2MWweYQ"
+Date: Sat, 25 May 2019 07:09:51 GMT
+Connection: keep-alive
+
+You sent a PUT%
+
+  ```
+
+  ```
+  * **PATCH**
+  ```
+  Exampel: 
+
+  curl -X PATCH "localhost:3000/methods" -i -s
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 16
+ETag: W/"10-nX0RfNJ/n1Mf1M8j4CP/opHdyTc"
+Date: Sat, 25 May 2019 07:10:38 GMT
+Connection: keep-alive
+
+You sent a Patch%
+
+  ```
+   ```
+  * **Delete**
+  ```
+  A no content response literally has no content even if you try to send it. 
+
+  Exampel: 
+
+  curl -X DELETE "localhost:3000/methods" -i -s
+
+HTTP/1.1 204 No Content
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+ETag: W/"11-yp0gotY8srpDtZiKnzBnAbuFms8"
+Date: Sat, 25 May 2019 07:12:02 GMT
+Connection: keep-alive
+
+  ```
+  
