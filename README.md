@@ -4,6 +4,11 @@
 
 * **URL**
 
+* **Error Response:**
+
+  * **Code:** default  
+    **Content:**
+
 * **CURL**
  ```
 // we use curl in our terminal to be able to send requests. 
@@ -391,12 +396,6 @@ Connection: keep-alive
     "__v": 0
   }
    ```
-  
-* **Error Response:**
-
-  * **Code:** default  
-    **Content:**
-
 
     * **Routing:** 
   ```
@@ -467,7 +466,7 @@ Connection: keep-alive
 
 You sent a POST, I will respond with a status of 201 (created) even though I did not%
   ```
-
+ ```
   * **PUT**
   ```
   Exampel: 
@@ -486,7 +485,7 @@ Connection: keep-alive
 You sent a PUT%
 
   ```
-
+ ```
   * **PATCH**
   ```
   Exampel: 
@@ -505,6 +504,7 @@ Connection: keep-alive
 You sent a Patch%
 
   ```
+   ```
   * **Delete**
   ```
   A no content response literally has no content even if you try to send it. 
