@@ -38,69 +38,7 @@ Paste that in a macOS Terminal:
    /users/{userId}  
    /posts/{postId}
 
-* **Data Params**
 
- ```
-  user: {
-            email: req.body.user.email,
-            userName: req.body.user.userName,
-            name: {
-                firstName: req.body.name.firstName,
-                lastName: req.body.name.lastName
-            }
-        }
- ```
- ```
-  post: {
-          title: req.body.post.title,
-          body: req.body.post.body,
-          author: {
-              firstName: req.body.author.firstName,
-              lastName: req.body.author.lastName
-          }
-      }
- ```
-
-* **Success Response:**
-
-  POST /posts
-  * **Code:** 200
-  ```
-    {
-    "post": {
-      "author": {
-        "firstName": "noob",
-        "lastName": "noob"
-      },
-      "title": "löksdöf",
-      "body": "noob"
-    },
-    "_id": "5ce6691a76edfe368ccab64a",
-    "__v": 0
-  }
-  ```
-  GET /users
-  * **Code:** 200
-  ```
-  {
-    "user": {
-      "name": {
-        "firstName": "Marcus",
-        "lastName": "Andersson"
-      },
-      "email": "sdfsdfs",
-      "userName": "sfsdfsd"
-    },
-    "_id": "5ce666ac5abb6d361587d536",
-    "__v": 0
-  }
-  
-  
-* **Error Response:**
-
-  * **Code:** default  
-    **Content:**
-    
 
 * **Sample Call Users:**
 
@@ -344,3 +282,67 @@ Connection: keep-alive
 
 {"post":{"author":{"firstName":"Michele","lastName":"Byman"},"title":"Best exempel","body":"Here comes a perfect text"},"_id":"5ce80c43c2b01d0317a13e0f","__v":0}%
 ```
+
+* **Data Params**
+
+ ```
+  user: {
+            email: req.body.user.email,
+            userName: req.body.user.userName,
+            name: {
+                firstName: req.body.name.firstName,
+                lastName: req.body.name.lastName
+            }
+        }
+ ```
+ ```
+  post: {
+          title: req.body.post.title,
+          body: req.body.post.body,
+          author: {
+              firstName: req.body.author.firstName,
+              lastName: req.body.author.lastName
+          }
+      }
+ ```
+
+* **Success Response:**
+
+  POST /posts
+  * **Code:** 200
+  ```
+    {
+    "post": {
+      "author": {
+        "firstName": "noob",
+        "lastName": "noob"
+      },
+      "title": "löksdöf",
+      "body": "noob"
+    },
+    "_id": "5ce6691a76edfe368ccab64a",
+    "__v": 0
+  }
+  ```
+  GET /users
+  * **Code:** 200
+  ```
+  {
+    "user": {
+      "name": {
+        "firstName": "Marcus",
+        "lastName": "Andersson"
+      },
+      "email": "sdfsdfs",
+      "userName": "sfsdfsd"
+    },
+    "_id": "5ce666ac5abb6d361587d536",
+    "__v": 0
+  }
+  
+  
+* **Error Response:**
+
+  * **Code:** default  
+    **Content:**
+    
