@@ -3,13 +3,9 @@
 * **All you need to set up this on your computer should be below**
 
 * **URL**
-
-* **Error Response:**
-
-  * **Code:** default  
-    **Content:**
-
-
+```
+localhost:3000
+```
 
 
 * **CURL**
@@ -499,4 +495,9 @@ ETag: W/"11-yp0gotY8srpDtZiKnzBnAbuFms8"
 Date: Sat, 25 May 2019 07:12:02 GMT
 Connection: keep-alive
 ```
+
+* **Error Response:**
+
+  * **Code:** default  
+    **Content:**
   
