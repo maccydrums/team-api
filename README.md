@@ -2,6 +2,16 @@
 ----
 * **All you need to set up this on your computer should be below**
 
+* **Start by cloning or downloading the repository**
+```
+When that is done navigate to the folder and Paste this in your terminal: 
+npm install 
+
+This will install all the dependencies you will need for this project and give you the latest updates. 
+```
+
+
+
 * **URL**
 ```
 localhost:3000
@@ -14,7 +24,7 @@ localhost:3000
 Exampel: curl -X GET "localhost:3000/users" 
  ```
 
-
+ 
   * **Brew for mac**
  ```
 "So, Homebrew is a package manager for OS X that allows a user to easily install software from the larger body of UNIX and open source software on the Mac" 
