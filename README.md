@@ -25,6 +25,14 @@ https://www.quora.com/What-is-Homebrew-for-OS-X
 Paste that in a macOS Terminal: 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
  ```
+ * **Chocolatey for Windows**
+ ```
+The package manager for Windows
+Chocolatey - Software Management Automation
+
+Install it here:
+https://chocolatey.org/
+ ```
 
 
  * **JQ**
