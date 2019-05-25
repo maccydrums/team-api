@@ -375,24 +375,31 @@ Connection: keep-alive
 ```
 Should we explaine this in more detail? just copy pasted this/Michele
 
+///////////////////////////////
+
 Listens to HTTP get on / and returns what you have specified in the router-set-up.
 
 This solution shows how to receive parameter data by showing query or path parameters as well as received headers
 
 There are three kinds of parameters in HTTP. 
 
+///////////////////////////////////
 Path parameter
 A path parameter is supplied on the path itself by adding a colon (:) on the path.
 
 router.get("/:pathParameter", helloWorld.params)
 the value of this parameter is available as req.params.pathParameter
 
+
+//////////////////////////////
 Query parameter
 Query parameters are supplied at the end of the path
 
 localhost:3000/someparam?name=value
 the value of this parameter is available as req.query.name
 
+
+/////////////////////////////////////
 Header parameter
 Header parameters are supplied in the request header as key: value
 
