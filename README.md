@@ -402,7 +402,7 @@ Connection: keep-alive
 * **Routing:** 
   ```
     Should we explaine this in more detail? just copy pasted this/Michele
-
+  ```
 Listens to HTTP get on / and returns what you have specified in the router-set-up.
 
 This solution shows how to receive parameter data by showing query or path parameters as well as received headers
@@ -427,6 +427,7 @@ Header parameters are supplied in the request header as key: value
 localhost:3000/someparam -H "key: value"
 the value of this parameter is avaulable as req.header.key
   ```
+  ```  ```
 
 
   ```
