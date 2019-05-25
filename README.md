@@ -396,10 +396,12 @@ Connection: keep-alive
     "__v": 0
   }
    ```
+    ```
+     ```
 
-    * **Routing:** 
+* **Routing:** 
   ```
-    Should we explaine this in more detail? just copy pasted this...../Michele
+    Should we explaine this in more detail? just copy pasted this/Michele
 
 Listens to HTTP get on / and returns what you have specified in the router-set-up.
 
