@@ -168,20 +168,29 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
 // In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change, but you will receive the object you sent and when you do a new get you will see the updated version.
 Example: You could use PATCH method to update title. 
 
-curl -X PATCH "localhost:3000/users/5ce809cdc2b01d0317a13e0c" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"kalle@gmail.com", "userName":"KalleAnka"}, "name":{"firstName":"Kalle", "lastName":"Anka"}}' | jq
+curl -X PATCH "localhost:3000/users/5cebb18246663222daad4f25" -H "accept: application/json" -H "Content-Type: application/json" -d '
+{
+  "user":{
+    "userName":"öklööäööööö",
+    "email":"öööööö@gmail.com",
+    "name":{
+      "firstName":"ööööö",
+      "lastName":"ööööö"}}}' | jq
 
- {
-    "user": {
-      "name": {
-        "firstName": "Charlie",
-        "lastName": "Carham"
-      },
-      "email": "kalle@gmail.com",
-      "userName": "KalleAnka"
+
+///Now you get the old user back you have to do a get to see the changes
+      {
+  "user": {
+    "name": {
+      "firstName": "janessa",
+      "lastName": "janessa"
     },
-    "_id": "5ce809cdc2b01d0317a13e0c",
-    "__v": 0
-  }
+    "userName": "hello",
+    "email": "kalle@gmail.com"
+  },
+  "_id": "5cebb18246663222daad4f25",
+  "__v": 0
+}
 ```
 
 * **PUT** -users
@@ -294,18 +303,27 @@ curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Ty
 // In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change, but you will receive the object you sent and when you do a new get you will see the updated version.
 Example: You could use PATCH method to update title. 
 
-curl -X PATCH "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"This is the next best example", "body": "Here comes another perfect text watch and you will find the difference"}, "author": { "firstName": "YOU DID IT", "lastName":"You know it" }}'  | jq
-
+curl -X PATCH "localhost:3000/posts/5ce7bd0fd643953ee994f418" -H "accept: application/json" -H "Content-Type: application/json" -d '
 {
   "post": {
+    "title":"Working", 
+    "body": "Working", 
     "author": {
-      "firstName": "Michele",
-      "lastName": "Byman"
+      "firstName": "working", 
+      "lastName":"working"
+      }
+    }}'  | jq
+
+    {
+  "post": {
+    "author": {
+      "firstName": "working",
+      "lastName": "working"
     },
-    "title": "Best exempel",
-    "body": "Here comes a perfect text"
+    "title": "Working",
+    "body": "Working"
   },
-  "_id": "5ce8138ee0a6fe04c0ef18b9",
+  "_id": "5ce821fce0a6fe04c0ef18cc",
   "__v": 0
 }
 ```
@@ -317,17 +335,18 @@ curl -X PATCH "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: applic
 
 curl -X PUT "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
 
-    "post": {
-      "author": {
-        "firstName": "YOU DID IT AGAIN",
-        "lastName": " Now You should know it"
-      },
-      "title": "Best exempel",
-      "body": "Here comes a perfect text"
+   {
+  "post": {
+    "author": {
+      "firstName": "your n ame",
+      "lastName": "your last name"
     },
-    "_id": "5ce821fce0a6fe04c0ef18bb",
-    "__v": 0
-  }
+    "title": "Your name",
+    "body": "Your text"
+  },
+  "_id": "5ce821fce0a6fe04c0ef18cc",
+  "__v": 0
+}
 ```
 
 
@@ -426,7 +445,7 @@ localhost:3000/someparam -H "key: value"
 the value of this parameter is avaulable as req.header.key
 
 ******************* 
-Example: curl -X GET “localhost:3000/users?userName=thisIsWhereYourUserNameShouldBe” -H “Content-Type: application/json; charset=utf-8" | jq
+Example: curl -X GET “localhost:3000/users?userName=thisIsWhereYourUserNameShouldBe”  | jq
 ```
 
 
@@ -434,9 +453,7 @@ Example: curl -X GET “localhost:3000/users?userName=thisIsWhereYourUserNameSho
 
   * **GET** -methods
 ```
-  Exampel: 
-
-  curl -X GET "localhost:3000/methods" -i -s
+  Exampel: curl -X GET  "localhost:3000/methods" -i -s
 
   HTTP/1.1 200 OK
 X-Powered-By: Express
@@ -523,7 +540,23 @@ Connection: keep-alive
 ```
 
 * **Error Response:**
+```
+//This is a bad request with status code 400
 
-  * **Code:** default  
-    **Content:**
-  
+Example: curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best example", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}kjgkhgkh' | jq
+
+  "error": {
+    "expose": true,
+    "statusCode": 400,
+    "status": 400,
+    "body": "{ \"post\": { \"title\":\"Best example\", \"body\": \"Here comes a perfect text\"}, \"author\": { \"firstName\": \"Michele\", \"lastName\":\"Byman\" }}kjgkhgkh",
+    "type": "entity.parse.failed"
+  }
+}
+
+//This is a bad request with status code 404 which uses our middleware
+
+Example:  curl "localhost:3000/usersj"
+
+404 - This page does not exist!
+```
