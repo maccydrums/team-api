@@ -424,6 +424,9 @@ Header parameters are supplied in the request header as key: value
 
 localhost:3000/someparam -H "key: value"
 the value of this parameter is avaulable as req.header.key
+
+******************* 
+Example: curl -X GET “localhost:3000/users?userName=thisIsWhereYourUserNameShouldBe” -H “Content-Type: application/json; charset=utf-8" | jq
 ```
 
 
