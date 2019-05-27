@@ -127,8 +127,10 @@ curl localhost:3000/users/{_id} | jq
 
 * **GET** -users
 ```
+//request
 curl -X GET "localhost:3000/users" | jq
 
+//response
  {
     "user": {
       "name": {
@@ -146,8 +148,10 @@ curl -X GET "localhost:3000/users" | jq
 
 * **POST** -users
 ```
+//request
 curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Type: application/json" -d '{"user":{"email":"carham@hotmail.com", "userName":"CarlieCarham"}, "name":{"firstName":"Charlie", "lastName":"Carham"}}' | jq
 
+//response
 {
 "user": {
     "name": {
@@ -168,6 +172,8 @@ curl -X POST "localhost:3000/users" -H "accept: application/json" -H "Content-Ty
 // In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change, but you will receive the object you sent and when you do a new get you will see the updated version.
 Example: You could use PATCH method to update title. 
 
+//request
+
 curl -X PATCH "localhost:3000/users/5cebb18246663222daad4f25" -H "accept: application/json" -H "Content-Type: application/json" -d '
 {
   "user":{
@@ -178,7 +184,7 @@ curl -X PATCH "localhost:3000/users/5cebb18246663222daad4f25" -H "accept: applic
       "lastName":"ööööö"}}}' | jq
 
 
-///Now you get the old user back you have to do a get to see the changes
+//response
       {
   "user": {
     "name": {
@@ -197,19 +203,33 @@ curl -X PATCH "localhost:3000/users/5cebb18246663222daad4f25" -H "accept: applic
 ```
 // In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id that you send with it
 
-curl -X PUT "localhost:3000/users/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
+//request
 
-    "post": {
-      "author": {
-        "firstName": "YOU DID IT AGAIN",
-        "lastName": " Now You should know it"
+curl -X PUT "localhost:3000/users/5cebd8b60f81ca2b9158e8be" -H "accept: application/json" -H "Content-Type: application/json" -d '
+{
+  "user":{
+    "userName":"ök",
+    "email":"öö@gmail.com",
+    "name":{
+      "firstName":"aaaaa",
+      "lastName":"aaaaaaa"}}}' | jq
+
+
+      //response
+
+  {
+    "user": {
+      "name": {
+        "firstName": "öääää",
+        "lastName": "ääääääö"
       },
-      "title": "Best exempel",
-      "body": "Here comes a perfect text"
+      "email": "lalallalalala@gmail.com",
+      "userName": "lalalalalalalala"
     },
-    "_id": "5ce821fce0a6fe04c0ef18bb",
+    "_id": "5cebd8b60f81ca2b9158e8be",
     "__v": 0
   }
+  
 ```
 
 
@@ -217,8 +237,10 @@ curl -X PUT "localhost:3000/users/5ce821fce0a6fe04c0ef18bb" -H "accept: applicat
 ```
 //  In this example you should change the _id ( "localhost:3000/users/ThisIsWhereYouChange_id" ) and this request will DELETE the post with that unique _id
 
+//request
 curl -X DELETE "localhost:3000/users/5ce809cdc2b01d0317a13e0c" -H "accept: application/json" | jq
 
+//response
 {
   "post": {
     "author": {
@@ -260,7 +282,10 @@ curl localhost:3000/posts/{_id} | jq
 ```
 // In this example you you will get all posts that are made to the posts-path
 
+//request
 curl -X GET "localhost:3000/posts" | jq
+
+//response
   {
     "post": {
       "author": {
@@ -281,8 +306,10 @@ curl -X GET "localhost:3000/posts" | jq
 // In this example you you will post (create) a new post to the posts-path ??? rewrite -> (if user hits same requests 2 times it would create another new resource if there is no constraint.)
 Example: Use POST method to save new user, it will get a unique _id.
 
+//request
 curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best example", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}' | jq
 
+//response
 {
   "post": {
     "author": {
@@ -303,6 +330,7 @@ curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Ty
 // In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to change in the object, this will ONLY overwrite what you want to  change, but you will receive the object you sent and when you do a new get you will see the updated version.
 Example: You could use PATCH method to update title. 
 
+//request
 curl -X PATCH "localhost:3000/posts/5ce7bd0fd643953ee994f418" -H "accept: application/json" -H "Content-Type: application/json" -d '
 {
   "post": {
@@ -314,6 +342,7 @@ curl -X PATCH "localhost:3000/posts/5ce7bd0fd643953ee994f418" -H "accept: applic
       }
     }}'  | jq
 
+//response
     {
   "post": {
     "author": {
@@ -333,8 +362,11 @@ curl -X PATCH "localhost:3000/posts/5ce7bd0fd643953ee994f418" -H "accept: applic
 ```
 // In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and what ever you want to CHANGE in the object, this will overwrite the WHOLE object if the object does not exist it will create a new object with unique _id that you send with it
 
+//request
 curl -X PUT "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best exempel", "body": "Here comes a perfect text"}, "author": { "firstName": "YOU DID IT AGAIN",  "lastName":" Now You should know it" }}'  | jq
 
+
+//response
    {
   "post": {
     "author": {
@@ -354,8 +386,10 @@ curl -X PUT "localhost:3000/posts/5ce821fce0a6fe04c0ef18bb" -H "accept: applicat
 ```
 //  In this example you should change the _id ( "localhost:3000/posts/ThisIsWhereYouChange_id" ) and this request will DELETE the post with that unique _id
 
+//request
 curl -X DELETE "localhost:3000/posts/5ce64753162aa905197ab93d" -H "accept: application/json" | jq
 
+//response
 {
   "post": {
     "author": {
@@ -371,8 +405,11 @@ curl -X DELETE "localhost:3000/posts/5ce64753162aa905197ab93d" -H "accept: appli
 
 // here we use -i to get info about the request, this is something that you can do instead of | jq 
 
+//request
 curl -X DELETE "localhost:3000/posts/5ce80c43c2b01d0317a13e0f" -H "accept: application/json" -i
 
+
+//response
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -453,8 +490,10 @@ Example: curl -X GET “localhost:3000/users?userName=thisIsWhereYourUserNameSho
 
   * **GET** -methods
 ```
+//request
   Exampel: curl -X GET  "localhost:3000/methods" -i -s
 
+//response
   HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -471,10 +510,10 @@ You sent a GET request and got a custom response header%
 
   * **POST** -methods
 ```
-  Exampel: 
+//request
+  Exampel: curl -X POST "localhost:3000/methods" -i -s
 
-  curl -X POST "localhost:3000/methods" -i -s
-
+//response
 HTTP/1.1 201 Created
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -489,10 +528,10 @@ You sent a POST, I will respond with a status of 201 (created) even though I did
 
   * **PUT** -methods
 ```
-  Exampel: 
+//request
+  Exampel:  curl -X PUT "localhost:3000/methods" -i -s
 
-  curl -X PUT "localhost:3000/methods" -i -s
-
+//response
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -506,10 +545,10 @@ You sent a PUT%
 ```
   * **PATCH** -methods
 ```
-  Exampel: 
+//request
+  Exampel: curl -X PATCH "localhost:3000/methods" -i -s
 
-  curl -X PATCH "localhost:3000/methods" -i -s
-
+//response
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -527,10 +566,10 @@ You sent a Patch%
 ```
   A no content response literally has no content even if you try to send it. 
 
-  Exampel: 
+//request
+  Exampel: curl -X DELETE "localhost:3000/methods" -i -s
 
-  curl -X DELETE "localhost:3000/methods" -i -s
-
+//response
 HTTP/1.1 204 No Content
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -542,6 +581,7 @@ Connection: keep-alive
 * **Error Response:**
 ```
 //This is a bad request with status code 400
+
 
 Example: curl -X POST "localhost:3000/posts" -H "accept: application/json" -H "Content-Type: application/json" -d '{ "post": { "title":"Best example", "body": "Here comes a perfect text"}, "author": { "firstName": "Michele", "lastName":"Byman" }}kjgkhgkh' | jq
 

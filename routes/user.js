@@ -54,8 +54,8 @@ put = (req, res, next) => {
                 email: req.body.user.email,
                 userName: req.body.user.userName,
                 name: {
-                    firstName: req.body.name.firstName,
-                    lastName: req.body.name.lastName
+                    firstName: req.body.user.name.firstName,
+                    lastName: req.body.user.name.lastName
                 }
             },
         }, {
