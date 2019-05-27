@@ -67,7 +67,7 @@ put = (req, res, next) => {
             console.log("status: ", status)
             if (status.upserted)
                 res.status(201)
-            else if (MediaStreamTrackAudioSourceNode.nModified)
+            else if (status.nModified)
                 res.status(200)
             else
                 res.status(204)
