@@ -1,9 +1,11 @@
 dotify = require('node-dotify');
 
 get = (req, res, next) => {
+    console.log(req.query.userName);
+    
     var query;
-    if (req.query.username) {
-        query = req.models.User.findOne({ username: req.query.username })
+    if (req.query.userName) {
+        query = req.models.User.findOne({ "user.userName": req.query.userName });
     }
     else {
         query = req.models.User.find()
@@ -11,14 +13,14 @@ get = (req, res, next) => {
 
     query.exec().then((user) => {
         return res.send(user);
-    }).catch((error) => next(error))
-}
+    }).catch((error) => next(error));
+};
 
 post = (req, res, next) => {
     req.models.User.create({
         user: {
-            email: req.body.user.email,
             userName: req.body.user.userName,
+            email: req.body.user.email,
             name: {
                 firstName: req.body.name.firstName,
                 lastName: req.body.name.lastName
@@ -28,22 +30,22 @@ post = (req, res, next) => {
         return res.status(201).send(user);
     }).catch((error) => {
         next(error);
-    })
-}
+    });
+};
 
 getById = (req, res, next) => {
     req.models.User.findById(req.params.id).then((user) => {
         return res.send(user);
-    }).catch((error) => next(error))
-}
+    }).catch((error) => next(error));
+};
 
 deleteById = (req, res, next) => {
     req.models.User.findOneAndDelete(req.params.id).then((deleted) => {
         if (deleted)
-            return res.send(deleted).status(200)
-        res.sendStatus(204)
-    }).catch((error) => next(error))
-}
+            return res.send(deleted).status(200);
+        res.sendStatus(204);
+    }).catch((error) => next(error));
+};
 
 put = (req, res, next) => {
     req.models.User.updateOne({ _id: req.params.id },

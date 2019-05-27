@@ -22,6 +22,11 @@ localhost:3000
  ```
 // we use curl in our terminal to be able to send requests. 
 Exampel: curl -X GET "localhost:3000/users" 
+
+Exampel: 
+curl --help
+
+This will get information about different options you can use with curl
  ```
 
  
